@@ -8,7 +8,7 @@ function parse (text) {
     [' z ', ' zuiden '],
     [' zw ', ' zuidwesten '],
     [' wzw ', ' westzuidwesten '],
-    [/(.*?\d+)(C)\b/gi, function(match, g1) { console.log('  check', g1); return g1 + ' graden celcius'} ]
+    [/(.*?\d+)(C)\b/gi, function(match, g1) { return g1 + ' graden celcius'} ]
   ]
 
   var result = text
