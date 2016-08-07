@@ -1,23 +1,23 @@
 'use strict'
 
 function parse (text) {
+  // map with replace function parameters
+  var replaceMap = [
+    ['km/u', ' kilometer per uur '],
+    ['kwh', 'kilowatt uur'],
+    [' z ', ' zuiden '],
+    [' zw ', ' zuidwesten '],
+    [' wzw ', ' westzuidwesten '],
+    [/(.*?\d+)(C)\b/gi, function(match, g1) { console.log('  check', g1); return g1 + ' graden celcius'} ]
+  ]
+
   var result = text
-  // reeks te wijzigen woorden in lower case (regexp formatted)
-  var mapObj = {
-     'km/u':'kilometer per uur',
-     'c ':'graden celsius ',
-     'c\.':'graden celsius.',
-     ' z ':' zuid ',
-     ' zw ':' zuidwest ',
-     ' wzw ':' westzuidwest '
-  }
-  var re = new RegExp(Object.keys(mapObj).join("|"),"gi")
-  result = result.replace(re, function (matched) {
-    return mapObj[matched.toLowerCase()]
+  Object.keys(replaceMap).forEach(function (key) {
+    result = result.replace(replaceMap[key][0], replaceMap[key][1])
   })
 
-  console.log('parsed', text)
-  console.log('to', result)
+  console.log('parsed ', text)
+  console.log('to     ', result)
   return result
 }
 
