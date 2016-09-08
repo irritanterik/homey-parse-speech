@@ -3,11 +3,17 @@
 function parse (text) {
   // map with replace function parameters
   var replaceMap = [
-    ['km/u', ' kilometer per uur '],
-    ['kwh', 'kilowatt uur'],
-    [' z ', ' zuiden '],
-    [' zw ', ' zuidwesten '],
-    [' wzw ', ' westzuidwesten '],
+    ['km/u', ' kilometer per uur'],
+    ['kWh', 'kilowatt uur'],
+    [' Z ', ' zuiden '],
+    [' ZW ', ' zuidwesten '],
+    [' WZW ', ' westzuidwesten '],
+    [' W ', ' westen '],
+    [' NW ', ' noordwesten '],
+    [' N ', ' noorden '],
+    [' NO ', ' noordoosten '],
+    [' O ', ' oosten '],
+    [' ZO ', ' zuidoosten '],
     [/(.*?\d+)(C)\b/gi, function(match, g1) { return g1 + ' graden celcius'} ]
   ]
 
